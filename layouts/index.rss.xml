@@ -1,0 +1,29 @@
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+    <title>Science Podcast</title>
+    <link>Your Website</link>
+    <description>Podcast Abstracts</description>
+    <language>en-us</language>
+    <copyright>Science Podcasts</copyright>
+    <!-- <atom:linkhref="http://www.files.idrsolutions.com/podcast.rss" rel="self" type="application/rss+xml" /> -->
+    <lastBuildDate>{{ .PublishDate.Format "Wed, 2 Jan 2006 15:04:05 GMT" }}</lastBuildDate>
+    <itunes:author>SciencePodcasts</itunes:author>
+    <itunes:summary>Our First itunes feed</itunes:summary>
+    <itunes:owner>
+        <itunes:name>IDRSolutions</itunes:name>
+        <itunes:email>contact2007@idrsolutions.com</itunes:email>
+    </itunes:owner>
+    <itunes:explicit>No</itunes:explicit>
+    <itunes:image href="http://files.idrsolutions.com/Java_PDF_Podcasts/idrlogo.png"/>
+     <itunes:category text="Science">
+        <itunes:category text="Medicine" />
+    </itunes:category>
+    {{ range $i, $pg := .Pages }}
+    <item>
+        <title>{{ $pg.Params.title }}</title>
+        <description>{{ $pg.Params.description }}</description>
+        <enclosure url="{{ $pg.Params.link }}" type="audio/mpeg" length="1" />
+    </item>
+    {{ end }}
+</channel>
+</rss>
